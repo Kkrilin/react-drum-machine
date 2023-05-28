@@ -1,0 +1,36 @@
+.control-container {
+  width: 40%;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.volume-slider input {
+  width: 80%;
+}
+#display {
+  background-color: aqua;
+  height: 40px;
+  width: 80%;
+  margin: 0 auto 10px;
+  padding-top: 10px;
+}
+
+.control {
+  width: 80%;
+  background-color: aqua;
+  margin: 0 auto;
+}
+
+.select {
+  width: 30%;
+  height: 30px;
+  background: black;
+  margin: 0 auto 10px;
+}
+
+.inner {
+  height: 99%;
+  width: 50%;
+  background-color: blue;
+  position: relative;
+}
