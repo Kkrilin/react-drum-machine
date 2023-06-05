@@ -5,8 +5,13 @@
   width: 100px;
   padding: 20px 0px;
   text-align: center;
+  background-color: rgb(7, 82, 57);
+  border-radius: 5px;
+}
+.drum-pad:hover {
+  cursor: pointer;
 }
 
 .active {
-  background-color: red;
+  background-color: rgb(4, 52, 7);
 }

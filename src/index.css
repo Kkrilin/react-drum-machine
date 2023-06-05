@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
 }
 
 code {
@@ -22,8 +23,9 @@ code {
 #drum-machine {
   display: flex;
   width: 660px;
-  background-color: antiquewhite;
+  background-color: rgb(20, 149, 128);
   justify-content: space-between;
+  border-radius: 10px;
 }
 #audio-pads {
   width: 55%;

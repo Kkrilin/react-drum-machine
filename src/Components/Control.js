@@ -1,39 +1,47 @@
-import { useState } from "react";
+import { useContext } from "react";
+import DrumContext from "../Store/drum.context";
 import "./Control.css";
 
 const Control = (props) => {
-  const [powerOn, setPower] = useState(false);
-  const [bank, setBank] = useState(false);
-  const [displayVolume, setDisplayVolume] = useState(0.4);
+  // const [powerOn, setPower] = useState(false);
+  // const [bank, setBank] = useState(false);
 
-  const powerStyles = {
-    float: "left",
-  };
+  const drumCtx = useContext(DrumContext);
 
-  const bankStyles = {
-    float: "right",
-  };
+  const powerStyles = drumCtx.power
+    ? {
+        float: "left",
+        backgroundColor: "green",
+      }
+    : { float: "right", ackgroundColor: "red" };
+
+  let bankStyles;
+  if (drumCtx.currentAudioId === "Heater kit") {
+    bankStyles = { float: "left" };
+  }
+  if (drumCtx.currentAudioId === "Smooth Piano Kit") {
+    bankStyles = { float: "right" };
+  }
 
   const onInputHandler = (e) => {
-    setDisplayVolume(e.target.value);
-    // document.querySelector(".clip").volume = displayVolume;
+    drumCtx.setSliderVal(e.target.value);
+    setTimeout(() => {
+      drumCtx.showDisplay("");
+    }, 800);
     document
       .querySelectorAll(".clip")
       .forEach((El) => (El.volume = e.target.value));
-    // setTimeout(() => {
-    //   document.querySelector("#display").innerHTML = "";
-    // }, 2000);
   };
 
   return (
     <div className="control-container">
       <div className="control">
         <p>Power</p>
-        <div className="select">
-          <div className="inner"></div>
+        <div onClick={() => drumCtx.isPower()} className="select">
+          <div className="inner" style={powerStyles}></div>
         </div>
       </div>
-      <p id="display">{`Volume : ${Math.floor(displayVolume * 100)}`} </p>
+      <p id="display">{drumCtx.display} </p>
       <div className="volume-slider">
         <input
           onInput={onInputHandler}
@@ -42,13 +50,13 @@ const Control = (props) => {
           min="0"
           step="0.01"
           type="range"
-          value={displayVolume}
+          value={drumCtx.sliderVal}
         />
       </div>
       <div className="control">
         <p>Bank</p>
-        <div className="select">
-          <div className="inner"></div>
+        <div className="select" onClick={() => drumCtx.setAudioId()}>
+          <div className="inner" style={bankStyles}></div>
         </div>
       </div>
     </div>

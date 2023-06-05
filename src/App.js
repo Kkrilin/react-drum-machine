@@ -1,13 +1,16 @@
 import React from "react";
 import Audio from "./Components/Audio";
 import Control from "./Components/Control";
+import DrumProvider from "./Store/DrumProvider";
 
 function App() {
   return (
-    <div id="drum-machine">
-      <Audio />
-      <Control />
-    </div>
+    <DrumProvider>
+      <div id="drum-machine">
+        <Audio />
+        <Control />
+      </div>
+    </DrumProvider>
   );
 }
 
