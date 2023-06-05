@@ -25,7 +25,9 @@ const Audio = (props) => {
   document.addEventListener("keydown", keyDownHandler);
 
   const playAudio = (Elid, type) => {
+    if (!drumCtx.power) return;
     drumCtx.showDisplay(type);
+
     const audio = document.getElementById(Elid);
 
     audio.play();
@@ -35,11 +37,6 @@ const Audio = (props) => {
       document.getElementById(type).classList.remove("active");
     }, 200);
   };
-
-  //   useEffect(() => {
-  //     drumCtx.setAudioPad(heaterKit);
-  //   }, []);
-  //   console.log(drumCtx.currentAudioPad);
 
   return (
     <div id="audio-pads">
